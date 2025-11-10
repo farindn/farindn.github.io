@@ -1,544 +1,502 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farin Dian Nugraha</title>
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- TailwindCSS CDN (v3.x) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Config: darkMode 'class' + theme extension -->
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-            },
-            colors: {
-              primary: {
-                50: '#EEF5FF',
-                100: '#D9E9FF',
-                200: '#B3D3FF',
-                300: '#87BBFF',
-                400: '#5B9EFF',
-                500: '#377FF7',
-                600: '#1F6AE6',
-                700: '#1558C9',
-                800: '#0F4296',
-                900: '#0A2D66',
-              },
-              // subtle neutral slate alias (maps to tailwind slate scale)
-              slate: {
-                50: '#F8FAFC',
-                100: '#F1F5F9',
-                200: '#E2E8F0',
-                300: '#CBD5E1',
-                400: '#94A3B8',
-                500: '#64748B',
-                600: '#475569',
-                700: '#334155',
-                800: '#1F2937',
-                900: '#0F172A',
-              },
-            },
-          },
-        },
-      };
-    </script>
-
-    <!-- Font Awesome v6.x -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      integrity="sha512-Rp2qI2tN1OZfQbYI1Y1m5L4Gk9Hk1oHf0eS9oD4HnZQb1O1b8nQ7wEw9u0lQ5Y2WvB0wBv6h0aYy3Xo6Q1vQ5A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <!-- Base & Print Styles -->
-    <style>
-      /* Print styles per playbook */
-      @media print {
-        .no-print {
-          display: none !important;
-        }
-        body {
-          background: #ffffff !important;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
-        .print-bg-white {
-          background: #ffffff !important;
-        }
-        .print-text-black {
-          color: #000000 !important;
-        }
-        .print-shadow-none {
-          box-shadow: none !important;
-        }
-        .print-max-none {
-          max-width: none !important;
-        }
-        .timeline-line {
-          background: #cbd5e1 !important; /* slate-300 for visibility */
-        }
-        .timeline-dot.current {
-          background: #1F6AE6 !important; /* primary-600 */
-          box-shadow: 0 0 0 3px #bfdbfe !important; /* light ring */
-        }
-        .timeline-dot.past {
-          background: #94a3b8 !important; /* slate-400 */
-          box-shadow: 0 0 0 3px #e2e8f0 !important; /* lighter ring */
-        }
-        .avoid-break {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-      }
-    </style>
-  </head>
-
-  <body
-    class="min-h-screen bg-slate-100 dark:bg-slate-900 antialiased font-sans text-slate-700 dark:text-slate-300 transition-colors duration-300"
-  >
-    <!-- Global Container -->
-    <main
-      id="card"
-      class="print-bg-white print-text-black print-shadow-none print-max-none max-w-[850px] mx-auto p-6 md:p-12"
-    >
-      <div
-        class="bg-white dark:bg-slate-800 shadow-sm rounded-xl overflow-hidden transition-colors duration-300"
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Farin Dian Nugraha</title>
+      <!-- Google Fonts: Inter -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+         />
+      <!-- TailwindCSS CDN (v3.x) -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <!-- Tailwind Config: darkMode 'class' + theme extension -->
+      <script>
+         tailwind.config = {
+           darkMode: 'class',
+           theme: {
+             extend: {
+               fontFamily: {
+                 sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+               },
+               colors: {
+                 primary: {
+                   50: '#EEF5FF',
+                   100: '#D9E9FF',
+                   200: '#B3D3FF',
+                   300: '#87BBFF',
+                   400: '#5B9EFF',
+                   500: '#377FF7',
+                   600: '#1F6AE6',
+                   700: '#1558C9',
+                   800: '#0F4296',
+                   900: '#0A2D66',
+                 },
+                 // subtle neutral slate alias (maps to tailwind slate scale)
+                 slate: {
+                   50: '#F8FAFC',
+                   100: '#F1F5F9',
+                   200: '#E2E8F0',
+                   300: '#CBD5E1',
+                   400: '#94A3B8',
+                   500: '#64748B',
+                   600: '#475569',
+                   700: '#334155',
+                   800: '#1F2937',
+                   900: '#0F172A',
+                 },
+               },
+             },
+           },
+         };
+      </script>
+      <!-- Font Awesome v6.x -->
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+         integrity="sha512-Rp2qI2tN1OZfQbYI1Y1m5L4Gk9Hk1oHf0eS9oD4HnZQb1O1b8nQ7wEw9u0lQ5Y2WvB0wBv6h0aYy3Xo6Q1vQ5A=="
+         crossorigin="anonymous"
+         referrerpolicy="no-referrer"
+         />
+      <!-- Base & Print Styles -->
+      <style>
+         /* Print styles per playbook */
+         @media print {
+         .no-print {
+         display: none !important;
+         }
+         body {
+         background: #ffffff !important;
+         -webkit-print-color-adjust: exact;
+         print-color-adjust: exact;
+         }
+         .print-bg-white {
+         background: #ffffff !important;
+         }
+         .print-text-black {
+         color: #000000 !important;
+         }
+         .print-shadow-none {
+         box-shadow: none !important;
+         }
+         .print-max-none {
+         max-width: none !important;
+         }
+         .timeline-line {
+         background: #cbd5e1 !important; /* slate-300 for visibility */
+         }
+         .timeline-dot.current {
+         background: #1F6AE6 !important; /* primary-600 */
+         box-shadow: 0 0 0 3px #bfdbfe !important; /* light ring */
+         }
+         .timeline-dot.past {
+         background: #94a3b8 !important; /* slate-400 */
+         box-shadow: 0 0 0 3px #e2e8f0 !important; /* lighter ring */
+         }
+         .avoid-break {
+         break-inside: avoid;
+         page-break-inside: avoid;
+         }
+         }
+      </style>
+   </head>
+   <body
+      class="min-h-screen bg-slate-100 dark:bg-slate-900 antialiased font-sans text-slate-700 dark:text-slate-300 transition-colors duration-300"
       >
-        <!-- Utility Bar -->
-        <div
-          class="no-print flex items-center justify-between gap-3 px-4 py-3 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700"
-        >
-          <div class="flex items-center gap-2">
-            <button
-              id="toggleTheme"
-              type="button"
-              class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
-              aria-label="Toggle dark mode"
+      <!-- Global Container -->
+      <main
+         id="card"
+         class="print-bg-white print-text-black print-shadow-none print-max-none max-w-[850px] mx-auto p-6 md:p-12"
+         >
+         <div
+            class="bg-white dark:bg-slate-800 shadow-sm rounded-xl overflow-hidden transition-colors duration-300"
             >
-              <i class="fa-solid fa-moon dark:hidden"></i>
-              <i class="fa-solid fa-sun hidden dark:inline"></i>
-              <span>Theme</span>
-            </button>
-
-            <button
-              id="printBtn"
-              type="button"
-              class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
-              aria-label="Print this CV"
-            >
-              <i class="fa-solid fa-print"></i>
-              <span>Print</span>
-            </button>
-          </div>
-
-        <!-- Header -->
-        <header
-          class="px-6 md:px-10 py-8 md:py-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6"
-        >
-          <div class="flex-1">
-            <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Farin Nugraha
-            </h1>
-            <p class="text-lg font-medium mt-1 text-slate-700 dark:text-slate-300">
-              Experienced Solutions Engineering
-            </p>
-
-            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-envelope"></i>
-                <a
-                  href="mailto:farin@example.com"
-                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
-                  >farindn@gmail.com</a
-                >
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-phone"></i>
-                <a
-                  href="tel:+62 821 **** 4008"
-                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
-                  >+62 821 **** 4008</a
-                >
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fa-brands fa-linkedin"></i>
-                <a
-                  href="https://www.linkedin.com/in/farindn/"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
-                  >https://www.linkedin.com/in/farindn/</a
-                >
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Jakarta, Indonesia</span>
-              </div>
+            <!-- Utility Bar -->
+            <div
+               class="no-print flex items-center justify-between gap-3 px-4 py-3 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700"
+               >
+               <div class="flex items-center gap-2">
+                  <button
+                     id="toggleTheme"
+                     type="button"
+                     class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
+                     aria-label="Toggle dark mode"
+                     >
+                  <i class="fa-solid fa-moon dark:hidden"></i>
+                  <i class="fa-solid fa-sun hidden dark:inline"></i>
+                  <span>Theme</span>
+                  </button>
+                  <button
+                     id="printBtn"
+                     type="button"
+                     class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
+                     aria-label="Print this CV"
+                     >
+                  <i class="fa-solid fa-print"></i>
+                  <span>Print</span>
+                  </button>
+               </div>
             </div>
-          </div>
-
-          <div class="md:ml-6 shrink-0">
-            <img
-              src="https://media.licdn.com/dms/image/v2/D5603AQG1YDcE8dCpEw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1725126482161?e=1764201600&v=beta&t=89ul52NP8FljooXQltYPeZ5MDUkbdYrm4OtwIalGs3o"
-              alt="Profile picture of Farin"
-              class="w-28 h-28 md:w-36 md:h-36 rounded-xl object-cover ring-1 ring-slate-200 dark:ring-slate-700"
-            />
-          </div>
-        </header>
-
-        <!-- Professional Summary -->
-        <section class="px-6 md:px-10 pb-8">
-          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Professional Summary
-          </h2>
-          <p class="mt-3 text-base leading-relaxed">
-            Experienced Solutions Engineer with a strong background in crafting customized IT and IoT solutions 
-on specific platforms, adeptly translating complex requirements into efficient technological solutions. 
-Backed by a history of driving innovation within IoT, fleet management, and technology development 
-sectors, I excel in architecting end-to-end solutions that fuel operational growth and enhance 
-business performance. Collaborative and business-centric, I bridge the gap between technical 
-intricacies and strategic goals while fostering a culture of innovation and teamwork.
-          </p>
-        </section>
-
-        <!-- Core Expertise -->
-        <section class="px-6 md:px-10 pb-8">
-          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Core Expertise
-          </h2>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >IT</span
-            >
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >IOT</span
-            >
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >Product Management</span
-            >
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >Project Management</span
-            >
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >Data Analytics</span
-            >
-            <span
-              class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-              >Pre-sales Consulting</span
-            >
-          </div>
-        </section>
-
-        <!-- Work Experience -->
-        <section id="experience" class="px-6 md:px-10 pb-8">
-          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Work Experience
-          </h2>
-
-          <div class="mt-6 relative">
-            <!-- Timeline vertical line -->
-            <div class="timeline-line absolute left-[3px] sm:left-[5px] top-0 h-full w-0.5 bg-slate-200"></div>
-
-            <!-- Item 1 (Current) -->
-            <article class="relative pl-6 sm:pl-8 avoid-break">
-              <div
-                class="timeline-dot current absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-primary-600 ring-4 ring-slate-50 dark:ring-slate-800"
-              ></div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Solutions Engineer, SEA
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Geotab • Remote
+            <!-- Header -->
+            <header
+               class="px-6 md:px-10 py-8 md:py-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6"
+               >
+               <div class="flex-1">
+                  <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                     Farin Nugraha
+                  </h1>
+                  <p class="text-lg font-medium mt-1 text-slate-700 dark:text-slate-300">
+                     Experienced Solutions Engineering
                   </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  Aug 2024 — Present
-                </p>
-              </div>
-
-              <ul class="mt-3 space-y-2 text-base leading-relaxed">
-                <li><span class="font-medium">- Provide expert consultation to customers on maximizing the effectiveness of technology, solutions, and products to meet their specific needs.</li>
-                <li><span class="font-medium">- Maintain comprehensive technical expertise within the ecosystem, acting as the Subject Matter Expert (SME) to facilitate a deeper understanding of solutions among end-users.</li>
-                <li><span class="font-medium">- Collaborate closely with the Sales team to design and implement effective solutions that address complex customer challenges and drive business growth.
-</li>
-                <li><span class="font-medium">- Provide technical guidance and support to sales teams, addressing all technical inquiries and facilitating a deeper understanding of product capabilities.</li>
-                <li><span class="font-medium">- Develop and manage detailed documentation for all ongoing projects and tasks, ensuring clarity and consistency across all technical processes.</li>
-                <li><span class="font-medium">- Support end-user requirements in special projects, offering tailored solutions that meet unique customer needs and enhance user experience.
-</li>
-                <li><span class="font-medium">- Develop, maintain, and optimize industry-specific custom reports, providing valuable insights and data-driven recommendations to customers.
-</li>
-                <li><span class="font-medium">- Lead and participate in engineering projects and integrations with partners, third-party integrators, and customers to deliver seamless and innovative solutions.
-</li>
-                <li><span class="font-medium">- Contribute to the development, implementation, and maintenance of new products, leveraging technical expertise to enhance product functionality and market relevance.</li>
-              </ul>
-            </article>
-
-            <!-- Item 2 -->
-            <article class="relative pl-6 sm:pl-8 mt-8 avoid-break">
-              <div
-                class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
-              ></div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Product Manager
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Nimbus Labs • Remote
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  Aug 2020 — Dec 2022
-                </p>
-              </div>
-
-              <ul class="mt-3 space-y-2 text-base leading-relaxed">
-                <li><span class="font-medium">Market expansion:</span> Launched SMB tier, achieving 32% QoQ new ARR.</li>
-                <li><span class="font-medium">Research → roadmap:</span> Synthesized 30+ interviews into a sequenced delivery plan.</li>
-                <li><span class="font-medium">Experiments:</span> Ran weekly tests; improved checkout conversion by 9%.</li>
-                <li><span class="font-medium">Quality:</span> Reduced regression incidents by 40% via definition-of-ready updates.</li>
-              </ul>
-            </article>
-
-            <!-- Item 3 -->
-            <article class="relative pl-6 sm:pl-8 mt-8 avoid-break">
-              <div
-                class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
-              ></div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Associate Product Manager
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Beacon Studio • On-site
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  Jul 2018 — Jul 2020
-                </p>
-              </div>
-
-              <ul class="mt-3 space-y-2 text-base leading-relaxed">
-                <li><span class="font-medium">Launches:</span> Drove v1 of analytics dashboard adopted by 70% of power users.</li>
-                <li><span class="font-medium">Voice of customer:</span> Instituted feedback loops improving NPS by 12 points.</li>
-                <li><span class="font-medium">Ops efficiencies:</span> Partnered with support to reduce resolution time by 21%.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- Key Projects -->
-        <section id="projects" class="px-6 md:px-10 pb-8">
-          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Key Projects
-          </h2>
-
-          <div class="mt-6 grid gap-6">
-            <!-- Project Card -->
-            <article
-              class="rounded-xl border border-slate-200 dark:border-slate-700 p-5 bg-slate-50 dark:bg-slate-900/30"
-            >
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Onboarding Reimagined
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Role: Product Lead
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">2023</p>
-              </div>
-
-              <p class="mt-3 text-base leading-relaxed">
-                Activation rates were stalled due to unclear value articulation. I reframed onboarding around
-                outcome-centric narratives and progressive disclosure, shipping guided setup, contextual tips,
-                and success milestones. This increased week-1 activation and reduced early churn.
-              </p>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >React</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >Node.js</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >Amplitude</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >Figma</span
-                >
-              </div>
-            </article>
-
-            <!-- Project Card 2 -->
-            <article
-              class="rounded-xl border border-slate-200 dark:border-slate-700 p-5 bg-slate-50 dark:bg-slate-900/30"
-            >
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Checkout Optimization
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Role: PM
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">2022</p>
-              </div>
-
-              <p class="mt-3 text-base leading-relaxed">
-                Introduced hypothesis-driven experiments to streamline checkout. Reduced friction via
-                address auto-complete, clearer error handling, and reassuring microcopy. Conversions and
-                customer satisfaction increased without sacrificing compliance.
-              </p>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >TypeScript</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >PostgreSQL</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >Experimentation Platform</span
-                >
-                <span
-                  class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
-                  >Segment</span
-                >
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- Education -->
-        <section id="education" class="px-6 md:px-10 pb-10">
-          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Education
-          </h2>
-
-          <div class="mt-6 relative">
-            <div class="timeline-line absolute left-[3px] sm:left-[5px] top-0 h-full w-0.5 bg-slate-200"></div>
-            
-            <!-- Item 1 -->
-            <article class="relative pl-6 sm:pl-8 avoid-break">
-              <div
-                class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
-              ></div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Bachelor's Degree, Computer Science
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    BINUS University
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  Graduated: 20023 • GPA: 3.60
-                </p>
-              </div>
-            </article>
-
-            <!-- Item 2 -->
-            <article class="relative pl-6 sm:pl-8 avoid-break">
-              <div
-                class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
-              ></div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div>
-                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                    Associate's Degree, Mechatronics Engineering
-                  </h3>
-                  <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Astra Polytechnic
-                  </p>
-                </div>
-                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  Graduated: 2019 • GPA: 3.27
-                </p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- Footer -->
-        <footer
-          class="no-print px-6 md:px-10 py-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700"
-        >
-          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
-            © <span id="year"></span> 🙋🏻 Farin Dian Nugraha. All rights reserved.
-          </p>
-        </footer>
-      </div>
-    </main>
-
-    <!-- JavaScript: Dark mode, Year, Print -->
-    <script>
-      // Dark mode persistence
-      const root = document.documentElement;
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        root.classList.add('dark');
-      } else if (savedTheme === 'light') {
-        root.classList.remove('dark');
-      } else {
-        // If no saved preference, respect system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (prefersDark) root.classList.add('dark');
-      }
-
-      document.getElementById('toggleTheme').addEventListener('click', () => {
-        const isDark = root.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
-
-      // Print functionality
-      document.getElementById('printBtn').addEventListener('click', () => {
-        window.print();
-      });
-
-      // Dynamic year in footer
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+                  <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+                     <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a
+                           href="mailto:farin@example.com"
+                           class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                           >farindn@gmail.com</a
+                           >
+                     </div>
+                     <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone"></i>
+                        <a
+                           href="tel:+62 821 **** 4008"
+                           class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                           >+62 821 **** 4008</a
+                           >
+                     </div>
+                     <div class="flex items-center gap-2">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <a
+                           href="https://www.linkedin.com/in/farindn/"
+                           target="_blank"
+                           rel="noopener"
+                           class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                           >https://www.linkedin.com/in/farindn/</a
+                           >
+                     </div>
+                     <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Jakarta, Indonesia</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="md:ml-6 shrink-0">
+                  <img
+                     src="https://media.licdn.com/dms/image/v2/D5603AQG1YDcE8dCpEw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1725126482161?e=1764201600&v=beta&t=89ul52NP8FljooXQltYPeZ5MDUkbdYrm4OtwIalGs3o"
+                     alt="Profile picture of Farin"
+                     class="w-28 h-28 md:w-36 md:h-36 rounded-xl object-cover ring-1 ring-slate-200 dark:ring-slate-700"
+                     />
+               </div>
+            </header>
+            <!-- Professional Summary -->
+            <section class="px-6 md:px-10 pb-8">
+               <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Professional Summary
+               </h2>
+               <p class="mt-3 text-base leading-relaxed">
+                  Experienced Solutions Engineer with a strong background in crafting customized IT and IoT solutions 
+                  on specific platforms, adeptly translating complex requirements into efficient technological solutions. 
+                  Backed by a history of driving innovation within IoT, fleet management, and technology development 
+                  sectors, I excel in architecting end-to-end solutions that fuel operational growth and enhance 
+                  business performance. Collaborative and business-centric, I bridge the gap between technical 
+                  intricacies and strategic goals while fostering a culture of innovation and teamwork.
+               </p>
+            </section>
+            <!-- Core Expertise -->
+            <section class="px-6 md:px-10 pb-8">
+               <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Core Expertise
+               </h2>
+               <div class="mt-4 flex flex-wrap gap-2">
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >IT</span
+                     >
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >IOT</span
+                     >
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >Product Management</span
+                     >
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >Project Management</span
+                     >
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >Data Analytics</span
+                     >
+                  <span
+                     class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                     >Pre-sales Consulting</span
+                     >
+               </div>
+            </section>
+            <!-- Work Experience -->
+            <section id="experience" class="px-6 md:px-10 pb-8">
+               <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Work Experience
+               </h2>
+               <div class="mt-6 relative">
+                  <!-- Timeline vertical line -->
+                  <div class="timeline-line absolute left-[3px] sm:left-[5px] top-0 h-full w-0.5 bg-slate-200"></div>
+                  <!-- Item 1 (Current) -->
+                  <article class="relative pl-6 sm:pl-8 avoid-break">
+                     <div
+                        class="timeline-dot current absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-primary-600 ring-4 ring-slate-50 dark:ring-slate-800"
+                        ></div>
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Solutions Engineer, SEA
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Geotab • Remote
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                           Aug 2024 — Present
+                        </p>
+                     </div>
+                     <ul class="mt-3 space-y-2 text-base leading-relaxed">
+                        <li><span class="font-medium">- Provide expert consultation to customers on maximizing the effectiveness of technology, solutions, and products to meet their specific needs.</li>
+                        <li><span class="font-medium">- Maintain comprehensive technical expertise within the ecosystem, acting as the Subject Matter Expert (SME) to facilitate a deeper understanding of solutions among end-users.</li>
+                        <li><span class="font-medium">- Collaborate closely with the Sales team to design and implement effective solutions that address complex customer challenges and drive business growth.</li>
+                        <li><span class="font-medium">- Provide technical guidance and support to sales teams, addressing all technical inquiries and facilitating a deeper understanding of product capabilities.</li>
+                        <li><span class="font-medium">- Develop and manage detailed documentation for all ongoing projects and tasks, ensuring clarity and consistency across all technical processes.</li>
+                        <li><span class="font-medium">- Support end-user requirements in special projects, offering tailored solutions that meet unique customer needs and enhance user experience.</li>
+                        <li><span class="font-medium">- Develop, maintain, and optimize industry-specific custom reports, providing valuable insights and data-driven recommendations to customers.</li>
+                        <li><span class="font-medium">- Lead and participate in engineering projects and integrations with partners, third-party integrators, and customers to deliver seamless and innovative solutions.</li>
+                        <li><span class="font-medium">- Contribute to the development, implementation, and maintenance of new products, leveraging technical expertise to enhance product functionality and market relevance.</li>
+                     </ul>
+                  </article>
+                  <!-- Item 2 -->
+                  <article class="relative pl-6 sm:pl-8 mt-8 avoid-break">
+                     <div
+                        class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
+                        ></div>
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Product Manager
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Nimbus Labs • Remote
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                           Aug 2020 — Dec 2022
+                        </p>
+                     </div>
+                     <ul class="mt-3 space-y-2 text-base leading-relaxed">
+                        <li><span class="font-medium">Market expansion:</span> Launched SMB tier, achieving 32% QoQ new ARR.</li>
+                        <li><span class="font-medium">Research → roadmap:</span> Synthesized 30+ interviews into a sequenced delivery plan.</li>
+                        <li><span class="font-medium">Experiments:</span> Ran weekly tests; improved checkout conversion by 9%.</li>
+                        <li><span class="font-medium">Quality:</span> Reduced regression incidents by 40% via definition-of-ready updates.</li>
+                     </ul>
+                  </article>
+                  <!-- Item 3 -->
+                  <article class="relative pl-6 sm:pl-8 mt-8 avoid-break">
+                     <div
+                        class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
+                        ></div>
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Associate Product Manager
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Beacon Studio • On-site
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                           Jul 2018 — Jul 2020
+                        </p>
+                     </div>
+                     <ul class="mt-3 space-y-2 text-base leading-relaxed">
+                        <li><span class="font-medium">Launches:</span> Drove v1 of analytics dashboard adopted by 70% of power users.</li>
+                        <li><span class="font-medium">Voice of customer:</span> Instituted feedback loops improving NPS by 12 points.</li>
+                        <li><span class="font-medium">Ops efficiencies:</span> Partnered with support to reduce resolution time by 21%.</li>
+                     </ul>
+                  </article>
+               </div>
+            </section>
+            <!-- Key Projects -->
+            <section id="projects" class="px-6 md:px-10 pb-8">
+               <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Key Projects
+               </h2>
+               <div class="mt-6 grid gap-6">
+                  <!-- Project Card -->
+                  <article
+                     class="rounded-xl border border-slate-200 dark:border-slate-700 p-5 bg-slate-50 dark:bg-slate-900/30"
+                     >
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Onboarding Reimagined
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Role: Product Lead
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">2023</p>
+                     </div>
+                     <p class="mt-3 text-base leading-relaxed">
+                        Activation rates were stalled due to unclear value articulation. I reframed onboarding around
+                        outcome-centric narratives and progressive disclosure, shipping guided setup, contextual tips,
+                        and success milestones. This increased week-1 activation and reduced early churn.
+                     </p>
+                     <div class="mt-4 flex flex-wrap gap-2">
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >React</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >Node.js</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >Amplitude</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >Figma</span
+                           >
+                     </div>
+                  </article>
+                  <!-- Project Card 2 -->
+                  <article
+                     class="rounded-xl border border-slate-200 dark:border-slate-700 p-5 bg-slate-50 dark:bg-slate-900/30"
+                     >
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Checkout Optimization
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Role: PM
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">2022</p>
+                     </div>
+                     <p class="mt-3 text-base leading-relaxed">
+                        Introduced hypothesis-driven experiments to streamline checkout. Reduced friction via
+                        address auto-complete, clearer error handling, and reassuring microcopy. Conversions and
+                        customer satisfaction increased without sacrificing compliance.
+                     </p>
+                     <div class="mt-4 flex flex-wrap gap-2">
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >TypeScript</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >PostgreSQL</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >Experimentation Platform</span
+                           >
+                        <span
+                           class="rounded-md px-3 py-1 bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 text-sm font-medium"
+                           >Segment</span
+                           >
+                     </div>
+                  </article>
+               </div>
+            </section>
+            <!-- Education -->
+            <section id="education" class="px-6 md:px-10 pb-10">
+               <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Education
+               </h2>
+               <div class="mt-6 relative">
+                  <div class="timeline-line absolute left-[3px] sm:left-[5px] top-0 h-full w-0.5 bg-slate-200"></div>
+                  <!-- Item 1 -->
+                  <article class="relative pl-6 sm:pl-8 avoid-break">
+                     <div
+                        class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
+                        ></div>
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Bachelor's Degree, Computer Science
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              BINUS University
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                           Graduated: 20023 • GPA: 3.60
+                        </p>
+                     </div>
+                  </article>
+                  <!-- Item 2 -->
+                  <article class="relative pl-6 sm:pl-8 avoid-break">
+                     <div
+                        class="timeline-dot past absolute -left-[6px] sm:-left-[8px] top-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-400 ring-4 ring-slate-50 dark:ring-slate-800"
+                        ></div>
+                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                        <div>
+                           <h3 class="text-xl font-bold text-slate-900 dark:text-white">
+                              Associate's Degree, Mechatronics Engineering
+                           </h3>
+                           <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                              Astra Polytechnic
+                           </p>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                           Graduated: 2019 • GPA: 3.27
+                        </p>
+                     </div>
+                  </article>
+               </div>
+            </section>
+            <!-- Footer -->
+            <footer
+               class="no-print px-6 md:px-10 py-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700"
+               >
+               <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                  © <span id="year"></span> 🙋🏻 Farin Dian Nugraha. All rights reserved.
+               </p>
+            </footer>
+         </div>
+      </main>
+      <!-- JavaScript: Dark mode, Year, Print -->
+      <script>
+         // Dark mode persistence
+         const root = document.documentElement;
+         const savedTheme = localStorage.getItem('theme');
+         if (savedTheme === 'dark') {
+           root.classList.add('dark');
+         } else if (savedTheme === 'light') {
+           root.classList.remove('dark');
+         } else {
+           // If no saved preference, respect system preference
+           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+           if (prefersDark) root.classList.add('dark');
+         }
+         
+         document.getElementById('toggleTheme').addEventListener('click', () => {
+           const isDark = root.classList.toggle('dark');
+           localStorage.setItem('theme', isDark ? 'dark' : 'light');
+         });
+         
+         // Print functionality
+         document.getElementById('printBtn').addEventListener('click', () => {
+           window.print();
+         });
+         
+         // Dynamic year in footer
+         document.getElementById('year').textContent = new Date().getFullYear();
+      </script>
+   </body>
 </html>
