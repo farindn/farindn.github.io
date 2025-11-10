@@ -13,20 +13,43 @@
       rel="stylesheet"
     />
 
-    <!-- TailwindCSS CDN -->
+    <!-- TailwindCSS CDN (v3.x) -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config: darkMode 'class' + theme extension -->
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
             },
             colors: {
               primary: {
+                50: '#EEF5FF',
+                100: '#D9E9FF',
+                200: '#B3D3FF',
+                300: '#87BBFF',
+                400: '#5B9EFF',
+                500: '#377FF7',
                 600: '#1F6AE6',
                 700: '#1558C9',
+                800: '#0F4296',
+                900: '#0A2D66',
+              },
+              // subtle neutral slate alias (maps to tailwind slate scale)
+              slate: {
+                50: '#F8FAFC',
+                100: '#F1F5F9',
+                200: '#E2E8F0',
+                300: '#CBD5E1',
+                400: '#94A3B8',
+                500: '#64748B',
+                600: '#475569',
+                700: '#334155',
+                800: '#1F2937',
+                900: '#0F172A',
               },
             },
           },
@@ -34,40 +57,82 @@
       };
     </script>
 
-    <!-- Google Material Icons -->
+    <!-- Font Awesome v6.x -->
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Rp2qI2tN1OZfQbYI1Y1m5L4Gk9Hk1oHf0eS9oD4HnZQb1O1b8nQ7wEw9u0lQ5Y2WvB0wBv6h0aYy3Xo6Q1vQ5A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
 
+    <!-- Base & Print Styles -->
     <style>
+      /* Print styles per playbook */
       @media print {
         .no-print {
           display: none !important;
+        }
+        body {
+          background: #ffffff !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .print-bg-white {
+          background: #ffffff !important;
+        }
+        .print-text-black {
+          color: #000000 !important;
+        }
+        .print-shadow-none {
+          box-shadow: none !important;
+        }
+        .print-max-none {
+          max-width: none !important;
+        }
+        .timeline-line {
+          background: #cbd5e1 !important; /* slate-300 for visibility */
+        }
+        .timeline-dot.current {
+          background: #1F6AE6 !important; /* primary-600 */
+          box-shadow: 0 0 0 3px #bfdbfe !important; /* light ring */
+        }
+        .timeline-dot.past {
+          background: #94a3b8 !important; /* slate-400 */
+          box-shadow: 0 0 0 3px #e2e8f0 !important; /* lighter ring */
+        }
+        .avoid-break {
+          break-inside: avoid;
+          page-break-inside: avoid;
         }
       }
     </style>
   </head>
 
-  <body class="min-h-screen bg-slate-100 dark:bg-slate-900 antialiased font-sans">
-    <main class="max-w-[850px] mx-auto p-6 md:p-12">
-      <div class="bg-white dark:bg-slate-800 shadow-sm rounded-xl overflow-hidden">
+  <body
+    class="min-h-screen bg-slate-100 dark:bg-slate-900 antialiased font-sans text-slate-700 dark:text-slate-300 transition-colors duration-300"
+  >
+    <!-- Global Container -->
+    <main
+      id="card"
+      class="print-bg-white print-text-black print-shadow-none print-max-none max-w-[850px] mx-auto p-6 md:p-12"
+    >
+      <div
+        class="bg-white dark:bg-slate-800 shadow-sm rounded-xl overflow-hidden transition-colors duration-300"
+      >
         <!-- Utility Bar -->
         <div
-          class="no-print flex items-center justify-between px-4 py-3 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700"
+          class="no-print flex items-center justify-between gap-3 px-4 py-3 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700"
         >
           <div class="flex items-center gap-2">
             <button
               id="toggleTheme"
               type="button"
               class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
+              aria-label="Toggle dark mode"
             >
-              <span class="material-icons dark:hidden">light_mode</span>
-              <span class="material-icons hidden dark:inline">dark_mode</span>
+              <i class="fa-solid fa-moon dark:hidden"></i>
+              <i class="fa-solid fa-sun hidden dark:inline"></i>
               <span>Theme</span>
             </button>
 
@@ -75,16 +140,36 @@
               id="printBtn"
               type="button"
               class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-primary-600 hover:text-white transition"
+              aria-label="Print this CV"
             >
-              <span class="material-icons">print</span>
+              <i class="fa-solid fa-print"></i>
               <span>Print</span>
             </button>
+          </div>
+
+          <!-- Optional quick links -->
+          <div class="flex items-center gap-3 text-sm">
+            <a
+              href="#experience"
+              class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700 transition"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700 transition"
+              >Projects</a
+            >
+            <a
+              href="#education"
+              class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700 transition"
+              >Education</a
+            >
           </div>
         </div>
 
         <!-- Header -->
         <header
-          class="px-6 md:px-10 py-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6"
+          class="px-6 md:px-10 py-8 md:py-10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-6"
         >
           <div class="flex-1">
             <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -96,33 +181,41 @@
 
             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
               <div class="flex items-center gap-2">
-                <span class="material-icons">email</span>
-                <a href="mailto:farin@example.com" class="text-primary-700 dark:text-primary-400 hover:underline">
-                  farin@example.com
-                </a>
+                <i class="fa-solid fa-envelope"></i>
+                <a
+                  href="mailto:farin@example.com"
+                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                  >farin@example.com</a
+                >
               </div>
               <div class="flex items-center gap-2">
-                <span class="material-icons">phone</span>
-                <a href="tel:+62000000000" class="text-primary-700 dark:text-primary-400 hover:underline">
-                  +62 0000 0000
-                </a>
+                <i class="fa-solid fa-phone"></i>
+                <a
+                  href="tel:+62000000000"
+                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                  >+62 0000 0000</a
+                >
               </div>
               <div class="flex items-center gap-2">
-                <span class="material-icons">business_center</span>
-                <a href="https://www.linkedin.com/in/farin" target="_blank" class="text-primary-700 dark:text-primary-400 hover:underline">
-                  linkedin.com/in/farin
-                </a>
+                <i class="fa-brands fa-linkedin"></i>
+                <a
+                  href="https://www.linkedin.com/in/farin"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-primary-700 dark:text-primary-400 hover:underline hover:decoration-primary-700"
+                  >linkedin.com/in/farin</a
+                >
               </div>
               <div class="flex items-center gap-2">
-                <span class="material-icons">location_on</span>
+                <i class="fa-solid fa-location-dot"></i>
                 <span>Hohhot, Inner Mongolia, China</span>
               </div>
             </div>
           </div>
 
-          <div class="shrink-0">
+          <div class="md:ml-6 shrink-0">
             <img
-              src="https://via.placeholder.com/140x140.png?text=F"
+              src="https://media.licdn.com/dms/image/v2/D5603AQG1YDcE8dCpEw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1725126482161?e=1764201600&v=beta&t=89ul52NP8FljooXQltYPeZ5MDUkbdYrm4OtwIalGs3o"
               alt="Profile picture of Farin"
               class="w-28 h-28 md:w-36 md:h-36 rounded-xl object-cover ring-1 ring-slate-200 dark:ring-slate-700"
             />
